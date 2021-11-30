@@ -1,0 +1,50 @@
+<div class="card card--clean">
+  <header class="card__header card__header--has-filter">
+      <h4>Equipos</h4>
+      <ul class="category-filter category-filter--featured">
+          <li class="category-filter__item">
+              <a href="#" class="category-filter__link category-filter__link--reset category-filter__link--active">Actuales</a>
+          </li>
+          <li class="category-filter__item">
+              <a href="#" class="category-filter__link" data-category="posts__item--category-1">Pasados</a>
+          </li>
+          <li class="category-filter__item">
+              <a href="#" class="category-filter__link" data-category="posts__item--category-3">Todos</a>
+          </li>
+      </ul>
+  </header>
+</div>
+<div class="card">
+  <div class="card__content">
+      <div class="posts__inner">
+          <div class="posts__excerpt">
+              <ul class="products products--grid">
+                  <!-- Product #0 -->
+                  <li class="product__item product__item--color-1 card" *ngFor="let team of teams">
+                      <div class="product__img">
+                          <div class="product__img-holder">
+                              <div class="product__bg-letters">{{team.alias}}</div>
+                              <div class="product__slider">
+                                  <div class="product__slide">
+                                      <div class="product__slide-img">
+                                          <img src="assets/images/samples/logo-alchemists--sm.png">
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="product__content card__content">
+                          <header class="product__header">
+                              <div class="product__header-inner">
+                                  <h2 class="product__title">
+                                      <a routerLink="/{{oidChampionship}}/teams/{{team.oid}}">{{team.name}}</a>
+                                  </h2>
+                              </div>
+                          </header>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </div>
+</div>

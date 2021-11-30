@@ -1,0 +1,19 @@
+<!-- Page Heading ================================================== -->
+<app-team-heading [team]="team" [oidChampionship]="oidChampionship"></app-team-heading>
+
+<div class="site-content">
+    <div class="container">
+
+        <div class="row">
+            <div class="content col-md-8">
+                <app-team-last-game [team]="team" [oidChampionship]="oidChampionship"></app-team-last-game>
+            </div>
+            
+            <div id="sidebar" class="sidebar col-md-4">
+                <app-game-next></app-game-next>
+            </div>
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,64 @@
+<div class="card">
+    <header class="card__header card__header--has-btn">
+        <h4>Resultado Último Partido</h4>
+        <a routerLink="../last-results" class="btn btn-default btn-outline btn-xs card-header__button">Ver Partidos</a>
+    </header>
+    <div class="card__content">
+
+        <!-- Game Result -->
+        <div class="game-result">
+            <section class="game-result__section">
+                <header class="game-result__header">
+                    <h3 class="game-result__title">{{game.championship.name}}</h3>
+                    <time class="game-result__date">{{game.date}}</time>
+                </header>
+                <div class="game-result__content">
+
+                    <!-- 1st Team -->
+                    <a href="#/team/{{game.local.nameURL}}" >
+                        <div class="game-result__team game-result__team--first">
+                            <figure class="game-result__team-logo">
+                                <img src="assets/images/samples/logo-alchemists--sm.png" alt="">
+                            </figure>
+                            <div class="game-result__team-info">
+                                <h5 class="game-result__team-name">{{game.local.name}}</h5>
+                                <div class="game-result__team-desc"> Local </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- 1st Team / End -->
+
+                    <div class="game-result__score-wrap">
+                        <div class="game-result__score">
+                            <span class="game-result__score-result game-result__score-result--winner">{{game.localScore}}</span>
+                            <span class="game-result__score-dash">-</span>
+                            <span class="game-result__score-result game-result__score-result--loser">{{game.visitorScore}}</span>
+                        </div>
+                        <div class="game-result__score-label">
+                            Final Score
+                            <div style="color:#9a9da2;">
+                                {{game.court.name}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2nd Team -->
+                    <a href="#/team/{{game.visitor.nameURL}}" >
+                        <div class="game-result__team game-result__team--second">
+                            <figure class="game-result__team-logo">
+                                <img src="assets/images/samples/logo-sharks--sm.png" alt="">
+                            </figure>
+                            <div class="game-result__team-info">
+                                <h5 class="game-result__team-name">{{game.visitor.name}}</h5>
+                                <div class="game-result__team-desc"> Visitante </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- 2nd Team / End -->
+                </div>
+            </section>
+        </div>
+        <!-- Game Result / End -->
+
+    </div>
+</div>

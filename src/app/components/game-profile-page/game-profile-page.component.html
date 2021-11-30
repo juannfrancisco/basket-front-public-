@@ -1,0 +1,93 @@
+<!-- Event Header
+		================================================== -->
+<div class="alc-event-header alc-event-header--layout-1" *ngIf="element">
+    <div class="alc-event-header__top">
+        <div class="container">
+            <h6 class="title">Championship Quarter Finals</h6>
+            <span class="subtitle">{{element.date|date}}</span>
+        </div>
+    </div>
+    <div class="alc-event-header__content">
+        <div class="container">
+            <div class="alc-event-header__content-inner">
+
+                <!-- Competitors -->
+                <div class="alc-event-competitors">
+                    <!-- Team #1 -->
+                    <div class="alc-event-competitors__item alc-event-team alc-event-team--winner">
+                        <div class="alc-event-team__details">
+                            <h4 class="alc-event-team__name">{{element.local?.name}}</h4>
+                            <div class="alc-event-team__info">{{element.local?.bio}}</div>
+                        </div>
+                        <figure class="alc-event-team__logo">
+                            <img src="assets/images/samples/logos/alchemists_last_game_results_small.png" alt="">
+                        </figure>
+                        <div class="alc-event-team__score-wrap">
+                            <div class="alc-event-team__score">{{element.localScore}}</div>
+                        </div>
+                    </div>
+                    <!-- Team #1 / End -->
+
+                    <!-- Team #2 -->
+                    <div class="alc-event-competitors__item alc-event-team">
+                        <div class="alc-event-team__details">
+                            <h4 class="alc-event-team__name">{{element.visitor?.name}}</h4>
+                            <div class="alc-event-team__info">{{element.visitor?.bio}}</div>
+                        </div>
+                        <figure class="alc-event-team__logo">
+                            <img src="assets/images/samples/logos/sharks_last_game_results_small.png" alt="">
+                        </figure>
+                        <div class="alc-event-team__score-wrap">
+                            <div class="alc-event-team__score">{{element.visitorScore}}</div>
+                        </div>
+                    </div>
+                    <!-- Team #2 / End -->
+
+                    <!-- Scoreboard -->
+                    <div class="alc-event-competitors__status">
+                        <div class="table-responsive">
+                            <table class="table table__cell-center table-wrap-bordered table-thead-color">
+                                <thead>
+                                    <tr>
+                                        <th>Scoreboard</th>
+                                        <th *ngFor="let item of scoreboard">{{item.quarter}}</th>
+                                        <th>T</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>{{element.local?.name}}</th>
+                                        <td *ngFor="let item of scoreboard" >{{item.localPoints}}</td>
+                                        <td>{{element.localScore}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>{{element.visitor?.name}}</th>
+                                        <td *ngFor="let item of scoreboard" >{{item.visitorPoints}}</td>
+                                        <td>{{element.visitorScore}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- Scoreboard / End -->
+
+                </div>
+                <!-- Competitors / End -->
+
+            </div>
+        </div>
+        <div class="alc-event-header__content-team-decor alc-event-header__content-team-decor--color1"></div>
+        <div class="alc-event-header__content-team-decor alc-event-header__content-team-decor--color2"></div>
+    </div>
+</div>
+
+
+<app-game-profile-menu></app-game-profile-menu>
+
+
+<div class="site-content">
+    <div class="container">
+
+    <router-outlet></router-outlet>
+    </div>
+</div>
