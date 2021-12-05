@@ -1,3 +1,4 @@
+import { Subject, Observable } from 'rxjs';
 import { environment } from './../../environments/environment';
 import { Team } from './../models/team';
 import { HttpClient } from '@angular/common/http';
@@ -7,6 +8,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class TeamsService {
+
+  actualTeam:Team;
+  eventsTeam = new Subject<Team>();
 
   constructor( private http: HttpClient ) { }
 
@@ -33,6 +37,15 @@ export class TeamsService {
 
   update( team:Team ){
     return this.http.post( environment.endpoint +  "teams", team );
+  }
+
+  eventTeams():Observable<Team>{
+    return this.eventsTeam.asObservable();
+  }
+
+  pushGame(data:Team) {
+    this.actualTeam = data;
+    this.eventsTeam.next(data);
   }
 
 }

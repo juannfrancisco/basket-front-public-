@@ -9,59 +9,58 @@
             <div class="posts__excerpt">
 
 
-                <div class="row" >
+                <div class="row">
                     <div class="col-6 " *ngFor="let game of games">
-                            <aside class="widget card widget--sidebar widget-game-result"  (click)="view(game)">
-                                    <div class="widget__content card__content"  >
-                                        <div class="widget-game-result__section">
-                                            <div class="widget-game-result__section-inner">
-                                                <header class="widget-game-result__header">
-                                                    <time class="widget-game-result__date" datetime="2016-03-24">{{game.date |date}}</time>
-                                                </header>
-                                                <div class="widget-game-result__main">
-                                                    <div class="widget-game-result__team widget-game-result__team--first">
-                                                        <figure class="widget-game-result__team-logo">
-                                                            <a href="#">
-                                                                <img src="assets/images/samples/logos/alchemists_last_game_results_small.png"
-                                                                    alt="">
-                                                            </a>
-                                                        </figure>
-                                                        <div class="widget-game-result__team-info">
-                                                            <h5 class="widget-game-result__team-name">Alchemists</h5>
-                                                            <div class="widget-game-result__team-desc">Elric Bros School</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="widget-game-result__score-wrap">
-                                                        <div class="widget-game-result__score">
-                                                            <span class="widget-game-result__score-result widget-game-result__score-result--winner">107</span>
-                                                            <span class="widget-game-result__score-dash">-</span>
-                                                            <span class="widget-game-result__score-result widget-game-result__score-result--loser">102</span>
-                                                        </div>
-                                                        <div class="widget-game-result__score-label">Final Score</div>
-                                                    </div>
-                                                    <div class="widget-game-result__team widget-game-result__team--second">
-                                                        <figure class="widget-game-result__team-logo">
-                                                            <a href="#">
-                                                                <img src="assets/images/samples/logos/sharks_last_game_results_small.png" alt="">
-                                                            </a>
-                                                        </figure>
-                                                        <div class="widget-game-result__team-info">
-                                                            <h5 class="widget-game-result__team-name">Sharks</h5>
-                                                            <div class="widget-game-result__team-desc">Marine College</div>
-                                                        </div>
-                                                    </div>
+                        <aside class="widget card widget--sidebar widget-game-result" (click)="view(game)">
+                            <div class="widget__content card__content">
+                                <div class="widget-game-result__section">
+                                    <div class="widget-game-result__section-inner">
+                                        <header class="widget-game-result__header">
+                                            <time class="widget-game-result__date" datetime="2016-03-24">{{game.date |date}}</time>
+                                        </header>
+                                        <div class="widget-game-result__main">
+                                            <div class="widget-game-result__team widget-game-result__team--first">
+                                                <figure class="widget-game-result__team-logo">
+                                                    <a href="#">
+                                                        <img src="assets/images/samples/logos/alchemists_last_game_results_small.png" alt="">
+                                                    </a>
+                                                </figure>
+                                                <div class="widget-game-result__team-info">
+                                                    <h5 class="widget-game-result__team-name">{{game.local?.name}}</h5>
+                                                    <div class="widget-game-result__team-desc">{{game.local?.name}}</div>
+                                                </div>
+                                            </div>
+                                            <div class="widget-game-result__score-wrap">
+                                                <div class="widget-game-result__score">
+                                                    <span class="widget-game-result__score-result widget-game-result__score-result--winner">{{game.localScore}}</span>
+                                                    <span class="widget-game-result__score-dash">-</span>
+                                                    <span class="widget-game-result__score-result widget-game-result__score-result--loser">{{game.visitorScore}}</span>
+                                                </div>
+                                                <div class="widget-game-result__score-label">Final Score</div>
+                                            </div>
+                                            <div class="widget-game-result__team widget-game-result__team--second">
+                                                <figure class="widget-game-result__team-logo">
+                                                    <a href="#">
+                                                        <img src="assets/images/samples/logos/sharks_last_game_results_small.png" alt="">
+                                                    </a>
+                                                </figure>
+                                                <div class="widget-game-result__team-info">
+                                                    <h5 class="widget-game-result__team-name">{{game.visitor?.name}}</h5>
+                                                    <div class="widget-game-result__team-desc">{{game.visitor?.name}}</div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </aside>
+                                </div>
+                            </div>
+                        </aside>
 
 
 
                     </div>
                 </div>
 
-                
+
             </div>
         </div>
     </div>
