@@ -12,15 +12,18 @@ import { Subject, BehaviorSubject, Observable } from 'rxjs';
 })
 export class GamesService {
 
+  actualGame:Game;
+  eventsGame = new Subject<Game>();
+
   constructor( private http: HttpClient ) { }
 
 
-  findAll(){
-    return this.http.get<Game[]>( environment.endpoint +  "games" );
+  findAll(oidChampionship:string){
+    return this.http.get<Game[]>( environment.endpoint + "championships/" + oidChampionship + "/games" );
   }
 
-  findById( oid:string ){
-    return this.http.get<Game>( environment.endpoint +  "games/" + oid );
+  findById( oid:string , oidChampionship:string){
+    return this.http.get<Game>( environment.endpoint  + "championships/" + oidChampionship + "/games/" + oid );
   }
 
   deleteById( oid:string ){
@@ -48,22 +51,21 @@ export class GamesService {
     return this.http.put( environment.endpoint +  "games/" + oid + "/stats" , gameStat);
   }
 
-  findStatsPlayer( oid:string ){
-    return this.http.get<GameStatPlayer[]>( environment.endpoint +  "games/" + oid + "/stats-player" );
+  findStatsPlayer( oid:string, oidChampionship:string ){
+    return this.http.get<GameStatPlayer[]>( environment.endpoint + "championships/" + oidChampionship + "/games/" + oid + "/stats-player" );
   }
 
-  findScoreboard( oid:string ){
-    return this.http.get<ScoreboardItem[]>( environment.endpoint +  "games/" + oid + "/scoreboard" );
+  findScoreboard( oid:string, oidChampionship:string ){
+    return this.http.get<ScoreboardItem[]>( environment.endpoint +"championships/" + oidChampionship + "/games/"  + oid + "/scoreboard" );
   }
-
-  actualGame = new Subject<Game>();
 
 
   eventGames():Observable<Game>{
-    return this.actualGame.asObservable();
+    return this.eventsGame.asObservable();
   }
 
   pushGame(data:Game) {
-    this.actualGame.next(data);
+    this.actualGame = data;
+    this.eventsGame.next(data);
   }
 }

@@ -22,6 +22,8 @@ import { TeamLastGameComponent } from './components/teams/team-last-game/team-la
 import { GameProfilePageComponent } from './components/game-profile-page/game-profile-page.component';
 import { GameProfileMenuComponent } from './components/games/game-profile-menu/game-profile-menu.component';
 import { GameProfileBoxScoreComponent } from './components/games/game-profile-box-score/game-profile-box-score.component';
+import { GamesPageComponent } from './components/games/games-page/games-page.component';
+import { GameProfileOverviewComponent } from './components/games/game-profile-overview/game-profile-overview.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { GameProfileBoxScoreComponent } from './components/games/game-profile-bo
     TeamLastGameComponent,
     GameProfilePageComponent,
     GameProfileMenuComponent,
-    GameProfileBoxScoreComponent
+    GameProfileBoxScoreComponent,
+    GamesPageComponent,
+    GameProfileOverviewComponent
   ],
   imports: [
     BrowserModule,

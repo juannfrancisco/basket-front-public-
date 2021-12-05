@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Game } from './../../../models/game';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-game-profile-menu',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./game-profile-menu.component.css']
 })
 export class GameProfileMenuComponent implements OnInit {
+
+  @Input() game:Game;
 
   constructor() { }
 

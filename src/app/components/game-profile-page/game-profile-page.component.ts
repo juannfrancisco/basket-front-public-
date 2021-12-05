@@ -16,10 +16,12 @@ import { GameStatPlayer } from '../../models/game-stat-player';
 })
 export class GameProfilePageComponent implements OnInit {
 
+  oidChampionship: string;
   element:Game = new Game();
   localStats: GameStat[] = [];
   visitorStats: GameStat[] = [];
   gameStats:GameStat[]=[];
+  isLoading:boolean;
 
   scoreboard:ScoreboardItem[] = [];
 
@@ -32,6 +34,7 @@ export class GameProfilePageComponent implements OnInit {
 
   ngOnInit(): void {
     let oidURL = this.route.snapshot.paramMap.get('idGame');
+    this.oidChampionship = this.route.snapshot.paramMap.get('idChampionship');
     this.findById( oidURL );
   }
 
@@ -42,22 +45,19 @@ export class GameProfilePageComponent implements OnInit {
    */
   async findById( oidURL ){
     try{
-      //this.showLoading(this.loadingService, true);
-      this.element = await this.service.findById(oidURL).toPromise();
+      this.element = await this.service.findById(oidURL, this.oidChampionship ).toPromise();
       this.element.local.players = await this.servicePlayers.findAllByTeam( this.element.local.oid ).toPromise();
       this.element.visitor.players = await this.servicePlayers.findAllByTeam( this.element.visitor.oid ).toPromise();
       this.element.local.players = this.initPlayers(this.element.local.players);
       this.element.visitor.players = this.initPlayers(this.element.visitor.players);
       this.service.pushGame(this.element);
       
-      this.scoreboard = await this.service.findScoreboard( this.element.oid ).toPromise();
+      this.scoreboard = await this.service.findScoreboard( this.element.oid, this.element.championship.oid ).toPromise();
       this.scoreboard = this.scoreboard.sort((a, b) => (a.quarter < b.quarter ? -1 : 1));
 
-      //this.hideLoading(this.loadingService);
-      //this.title = this.element.local.name + " v/s " + this.element.visitor.name;
+      this.isLoading = true;
+
     }catch(e){
-      //this.hideLoading(this.loadingService);
-      //this.showErrorMessage();
       alert("Error");
     }
   }
