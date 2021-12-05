@@ -2,22 +2,22 @@
     <div class="container">
         <a href="#" class="content-filter__toggle"></a>
         <ul class="content-filter__list">
-            <li class="content-filter__item ">
+            <li class="content-filter__item" [routerLinkActive]="['content-filter__item--active']">
                 <a [routerLink]="['/', game.championship?.oid, 'games', game.oid , 'overview']" class="content-filter__link"><small>Game</small>Overview</a>
             </li>
-            <li class="content-filter__item">
-                <a [routerLinkActive]="['content-filter__item--active']" [routerLink]="['/', game.championship?.oid, 'games', game.oid , 'box-score']" class="content-filter__link"><small>Game</small>Box Score</a>
+            <li class="content-filter__item" [routerLinkActive]="['content-filter__item--active']">
+                <a [routerLink]="['/', game.championship?.oid, 'games', game.oid , 'box-score']" class="content-filter__link"><small>Game</small>Box Score</a>
             </li>
-            <li class="content-filter__item ">
+            <li class="content-filter__item" [routerLinkActive]="['content-filter__item--active']">
                 <a [routerLink]="['/', game.championship?.oid, 'games', game.oid , 'home']" class="content-filter__link"><small>Game</small>Play-by-Play</a>
             </li>
-            <li class="content-filter__item ">
+            <li class="content-filter__item" [routerLinkActive]="['content-filter__item--active']">
                 <a [routerLink]="['/', game.championship?.oid, 'games', game.oid , 'home']" class="content-filter__link"><small>Game</small>Team Stats</a>
             </li>
-            <li class="content-filter__item ">
+            <li class="content-filter__item" [routerLinkActive]="['content-filter__item--active']">
                 <a [routerLink]="['/', game.championship?.oid, 'games', game.oid , 'home']" class="content-filter__link"><small>Game</small>News Recap</a>
             </li>
-            <li class="content-filter__item ">
+            <li class="content-filter__item" [routerLinkActive]="['content-filter__item--active']">
                 <a [routerLink]="['/', game.championship?.oid, 'games', game.oid , 'home']" class="content-filter__link"><small>Game</small>Videos</a>
             </li>
         </ul>

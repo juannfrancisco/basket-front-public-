@@ -29,6 +29,7 @@ import { TeamRosterComponent } from './components/teams/team-roster/team-roster.
 import { TeamStandingsComponent } from './components/teams/team-standings/team-standings.component';
 import { TeamLastResultsComponent } from './components/teams/team-last-results/team-last-results.component';
 import { TeamScheduleComponent } from './components/teams/team-schedule/team-schedule.component';
+import { TeamBoxScoreComponent } from './components/teams/team-box-score/team-box-score.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { TeamScheduleComponent } from './components/teams/team-schedule/team-sch
     TeamRosterComponent,
     TeamStandingsComponent,
     TeamLastResultsComponent,
-    TeamScheduleComponent
+    TeamScheduleComponent,
+    TeamBoxScoreComponent
   ],
   imports: [
     BrowserModule,

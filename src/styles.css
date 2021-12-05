@@ -28615,3 +28615,9 @@ td.team-leader__avg {
     padding-right: 50px !important;
   }
 }
+
+
+.card--color--info .card__header::before {
+  background-color: #0cb2e2;
+}
+

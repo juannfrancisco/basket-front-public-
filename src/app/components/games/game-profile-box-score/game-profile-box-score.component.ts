@@ -1,3 +1,5 @@
+import { constants } from './../../../../environments/constants';
+import { Player } from './../../../models/player';
 import { GameStatPlayer } from './../../../models/game-stat-player';
 import { Game } from './../../../models/game';
 import { GamesService } from './../../../services/games.service';
@@ -33,7 +35,18 @@ export class GameProfileBoxScoreComponent implements OnInit {
 
   async getStatsPlayer(game: Game) {
     let stats: GameStatPlayer[] = await this.service.findStatsPlayer(game.oid, game.championship.oid).toPromise();
-    game.local.players.forEach(player => {
+  
+    this.initPlayers(game.local.players, stats);
+    this.initPlayers(game.visitor.players, stats);
+  }
+
+  /**
+   * 
+   * @param players 
+   */
+  initPlayers(players: Player[], stats:GameStatPlayer[]):void {
+
+    players.forEach(player => {
       stats.forEach(stat => {
         if (player.oid === stat.oidPlayer) {
           stat.apts1 = 0;
@@ -52,6 +65,7 @@ export class GameProfileBoxScoreComponent implements OnInit {
         }
       });
     });
-
+    
   }
+
 }
