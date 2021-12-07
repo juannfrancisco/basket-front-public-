@@ -1,22 +1,13 @@
+<div class="site-content pt-0 pb-0" *ngIf="!isLoading">
+    <div class="container-fluid bg-white text-center p-4">
+        <img src="assets/images/loading/basket-loading4.gif" class="p-4">
+    </div>
+</div>
 <ng-container *ngIf="isLoading">
     <app-team-heading [team]="team" [oidChampionship]="oidChampionship"></app-team-heading>
-
     <div class="site-content">
         <div class="container">
-
             <router-outlet></router-outlet>
-
-            <!-- <div class="row">
-            <div class="content col-md-8">
-                <app-team-last-game [team]="team" [oidChampionship]="oidChampionship"></app-team-last-game>
-            </div>
-            
-            <div id="sidebar" class="sidebar col-md-4">
-                <app-game-next></app-game-next>
-            </div>
-
-        </div> -->
-
         </div>
     </div>
 </ng-container>

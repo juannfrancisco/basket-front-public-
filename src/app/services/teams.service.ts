@@ -1,3 +1,4 @@
+import { GameTeam } from './../models/game-team';
 import { Subject, Observable } from 'rxjs';
 import { environment } from './../../environments/environment';
 import { Team } from './../models/team';
@@ -25,6 +26,10 @@ export class TeamsService {
 
   findById( oid:string ){
     return this.http.get<Team>( environment.endpoint +  "teams/" + oid );
+  }
+
+  findsGames( oidTeam:string ){
+    return this.http.get<GameTeam[]>( environment.endpoint +  "teams/" + oidTeam + "/games");
   }
 
   deleteById( oid:string ){

@@ -57,9 +57,9 @@
                 <!-- Main Navigation -->
                 <nav class="main-nav clearfix">
                     <ul class="main-nav__list">
-                        <li class=""><a routerLink="">Inicio</a></li>
-                        <li class=""><a routerLink="teams">Equipos</a></li>
-                        <li class=""><a routerLink="games">Partidos</a></li>
+                        <li class=""><a routerLink="/">Inicio</a></li>
+                        <li class=""><a [routerLink]="['/', oidChampionship, 'teams']">Equipos</a></li>
+                        <li class=""><a [routerLink]="['/', oidChampionship, 'games']">Partidos</a></li>
                     </ul>
 
                     <!-- Social Links -->

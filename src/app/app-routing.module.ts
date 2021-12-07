@@ -1,3 +1,4 @@
+import { GameProfilePlayByPlayComponent } from './components/games/game-profile-play-by-play/game-profile-play-by-play.component';
 import { TeamStandingsComponent } from './components/teams/team-standings/team-standings.component';
 import { TeamOverviewComponent } from './components/teams/team-overview/team-overview.component';
 import { GameProfileOverviewComponent } from './components/games/game-profile-overview/game-profile-overview.component';
@@ -42,18 +43,10 @@ const routes: Routes = [
     path: ':idChampionship/games/:idGame',
     component: GameProfilePageComponent,
     children:[
-      {
-        path: '',
-        component: GameProfileOverviewComponent
-      },
-      {
-        path: 'overview',
-        component: GameProfileOverviewComponent
-      },
-      {
-        path: 'box-score',
-        component: GameProfileBoxScoreComponent
-      }
+      {path: '',component: GameProfileOverviewComponent},
+      {path: 'overview',component: GameProfileOverviewComponent},
+      {path: 'box-score',component: GameProfileBoxScoreComponent},
+      {path: 'play-by-play',component: GameProfilePlayByPlayComponent}
     ]
   }
 

@@ -30,6 +30,7 @@ import { TeamStandingsComponent } from './components/teams/team-standings/team-s
 import { TeamLastResultsComponent } from './components/teams/team-last-results/team-last-results.component';
 import { TeamScheduleComponent } from './components/teams/team-schedule/team-schedule.component';
 import { TeamBoxScoreComponent } from './components/teams/team-box-score/team-box-score.component';
+import { GameProfilePlayByPlayComponent } from './components/games/game-profile-play-by-play/game-profile-play-by-play.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { TeamBoxScoreComponent } from './components/teams/team-box-score/team-bo
     TeamStandingsComponent,
     TeamLastResultsComponent,
     TeamScheduleComponent,
-    TeamBoxScoreComponent
+    TeamBoxScoreComponent,
+    GameProfilePlayByPlayComponent
   ],
   imports: [
     BrowserModule,

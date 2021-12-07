@@ -43,8 +43,12 @@ export class GamesService {
   }
 
 
-  findStats( oid:string ){
-    return this.http.get<GameStat[]>( environment.endpoint +  "games/" + oid + "/stats" );
+  findStats( oid:string, oidChampionship:string ){
+    return this.http.get<GameStat[]>( environment.endpoint + "championships/" + oidChampionship+  "/games/" + oid + "/stats" );
+  }
+
+  findStatsByQuarter( oid:string, oidChampionship:string, quarter:number ){
+    return this.http.get<GameStat[]>( environment.endpoint + "championships/" + oidChampionship+  "/games/" + oid + "/stats/"+ quarter );
   }
 
   saveStat( oid:string, gameStat:GameStat ){

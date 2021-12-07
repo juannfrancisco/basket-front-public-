@@ -1,17 +1,16 @@
 <div class="container">
 
-        <div class="row">
-            <!-- Team Roster: Table -->
-            <div class="col-md-8">
-                <div class="card card--has-table">
-                    <div class="card__header">
-                        <h4>Jugadores de {{team?.name}}</h4>
-                    </div>
-                    <div class="card__content">
-      
-                        <div class="table-responsive">
-                            <table class="table table--lg team-roster-table">
-                                <thead>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card card--has-table">
+                <div class="card__header">
+                    <h4>Jugadores de {{team?.name}}</h4>
+                </div>
+                <div class="card__content">
+
+                    <div class="table-responsive">
+                        <table class="table table--lg team-roster-table">
+                            <thead>
                                 <tr>
                                     <th class="team-roster-table__number">NRO</th>
                                     <th class="team-roster-table__name">Nombre Jugador</th>
@@ -20,29 +19,27 @@
                                     <th class="team-roster-table__height">Altura</th>
                                     <th class="team-roster-table__weight">Peso</th>
                                 </tr>
-                                </thead>
-                                <tbody>
-                                  <tr *ngIf="!team?.players">
-                                      <td colspan="6" class="text-center" >Aun no existen Jugadores en el Equipo</td> 
-                                  </tr>
-                                 
-                                  <tr *ngFor="let player of team?.players">
-                                      <td class="team-roster-table__number">{{player?.number}}</td>
-                                      <td class="team-roster-table__name">{{player?.name}} {{player?.lastName}}</td>
-                                      <td class="team-roster-table__position hidden-xs hidden-sm">{{player?.position}} </td>
-                                      <td class="team-roster-table__age">{{player}}</td>
-                                      <td class="team-roster-table__height">{{player?.height}}</td>
-                                      <td class="team-roster-table__weight">{{player?.weight}} kl</td>
-                                  </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                            </thead>
+                            <tbody>
+                                <tr *ngIf="!team?.players">
+                                    <td colspan="6" class="text-center">Aun no existen Jugadores en el Equipo</td>
+                                </tr>
+
+                                <tr *ngFor="let player of team?.players">
+                                    <td class="team-roster-table__number">{{player?.number}}</td>
+                                    <td class="team-roster-table__name">{{player?.name}} {{player?.lastName}}</td>
+                                    <td class="team-roster-table__position hidden-xs hidden-sm">{{player?.position}} </td>
+                                    <td class="team-roster-table__age">{{player}}</td>
+                                    <td class="team-roster-table__height">{{player?.height}}</td>
+                                    <td class="team-roster-table__weight">{{player?.weight}} kl</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-      
-               
-            </div>
         </div>
-      </div>
+        <div class="col-md-4">
+        </div>
+    </div>
+</div>
