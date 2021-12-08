@@ -66,4 +66,106 @@
             </div>
         </div>
     </div>
+
+
+    <div class="sidebar col-lg-4" >
+
+        <div class="widget card card--has-table widget--sidebar widget-matchup">
+            <div class="widget__content card__content">
+                <div class="table-responsive">
+                    <table class="table table table-hover alc-table-stats alc-table-stats--compact">
+                        <thead class="table-card-header">
+                            <tr>
+                                <th class="table-card-header__title">Matchup</th>
+                                <th>
+                                    <img src="assets/images/samples/logos/alchemists_b_shield.png" alt="The Alchemists">
+                                </th>
+                                <th>
+                                    <img src="assets/images/samples/logos/sharks_shield.png" alt="Sharks">
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="alc-align-start alc-highlight-sm">FG Made-Attempted</td>
+                                <td class="alc-highlight-sm">36-80</td>
+                                <td class="alc-highlight-sm">42-79</td>
+                            </tr>
+                            <tr>
+                                <td class="alc-align-start alc-highlight-sm">Field Goal %</td>
+                                <td class="alc-highlight-sm">45.0</td>
+                                <td class="alc-highlight-sm">53.2</td>
+                            </tr>
+                            <tr>
+                                <td class="alc-align-start alc-highlight-sm">3PT Made-Attempted</td>
+                                <td class="alc-highlight-sm">10-29</td>
+                                <td class="alc-highlight-sm">11-24</td>
+                            </tr>
+                            <tr>
+                                <td class="alc-align-start alc-highlight-sm">Three Point %</td>
+                                <td class="alc-highlight-sm">34.5</td>
+                                <td class="alc-highlight-sm">45.8</td>
+                            </tr>
+                            <tr>
+                                <td class="alc-align-start alc-highlight-sm">FT Made-Attempted</td>
+                                <td class="alc-highlight-sm">23-29</td>
+                                <td class="alc-highlight-sm">20-25</td>
+                            </tr>
+                            <tr>
+                                <td class="alc-align-start alc-highlight-sm">Free Throw %</td>
+                                <td class="alc-highlight-sm">79.3</td>
+                                <td class="alc-highlight-sm">80.0</td>
+                            </tr>
+                            <tr>
+                                <td class="alc-align-start alc-highlight-sm">Total Rebounds</td>
+                                <td class="alc-highlight-sm">
+                                    {{ (currentStatsLocal.or || 0) +  (currentStatsLocal.dr || 0) }}
+                                </td>
+                                <td class="alc-highlight-sm">
+                                    {{ (currentStatsVisitor.or || 0) +  (currentStatsVisitor.dr || 0) }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="alc-align-start alc-indent">Offensive Rebounds</td>
+                                <td class="">{{currentStatsLocal.or || 0 }}</td>
+                                <td class="">{{currentStatsVisitor.or || 0 }}</td>
+                            </tr>
+                            <tr>
+                                <td class="alc-align-start alc-indent">Defensive Rebounds</td>
+                                <td class="">{{currentStatsLocal.dr || 0 }}</td>
+                                <td class="">{{currentStatsVisitor.dr || 0 }}</td>
+                            </tr>
+                            <tr>
+                                <td class="alc-align-start alc-highlight-sm">Assists</td>
+                                <td class="alc-highlight-sm">{{currentStatsLocal.ast  || 0 }}</td>
+                                <td class="alc-highlight-sm">{{currentStatsVisitor.ast || 0 }}</td>
+                            </tr>
+                            <tr>
+                                <td class="alc-align-start alc-highlight-sm">Steals</td>
+                                <td class="alc-highlight-sm">{{currentStatsLocal.stl || 0 }}</td>
+                                <td class="alc-highlight-sm">{{currentStatsVisitor.stl || 0 }}</td>
+                            </tr>
+                            <tr>
+                                <td class="alc-align-start alc-highlight-sm">Blocks</td>
+                                <td class="alc-highlight-sm">{{currentStatsLocal.blk || 0 }}</td>
+                                <td class="alc-highlight-sm">{{currentStatsVisitor.blk || 0 }}</td>
+                            </tr>
+                            <tr>
+                                <td class="alc-align-start alc-highlight-sm">Points</td>
+                                <td class="alc-highlight-sm">{{currentStatsLocal.pts}}</td>
+                                <td class="alc-highlight-sm">{{currentStatsVisitor.pts}}</td>
+                            </tr>
+                            <tr>
+                                <td class="alc-align-start alc-highlight-sm">Personal Fouls</td>
+                                <td class="alc-highlight-sm">{{currentStatsLocal.pf}}</td>
+                                <td class="alc-highlight-sm">{{currentStatsVisitor.pf}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
 </div>

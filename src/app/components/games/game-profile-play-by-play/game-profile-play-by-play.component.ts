@@ -1,3 +1,4 @@
+import { GameStatPlayer } from './../../../models/game-stat-player';
 import { TypeTeam } from './../../../models/type-team';
 import { GameStat } from './../../../models/game-stat';
 import { GamesService } from './../../../services/games.service';
@@ -14,8 +15,14 @@ export class GameProfilePlayByPlayComponent implements OnInit {
 
   game: Game;
   currentStats:GameStat[];
+  currentStatsLocal:GameStatPlayer;
+  currentStatsVisitor:GameStatPlayer;
   quarter:number;
   stats:Map<number, GameStat[]> = new Map<number, GameStat[]>();
+
+  statsTeamLocal:Map<number, GameStatPlayer> = new Map<number, GameStatPlayer>();
+  statsTeamVisitor:Map<number, GameStatPlayer> = new Map<number, GameStatPlayer>();
+
 
   constructor(
     private service: GamesService
@@ -32,7 +39,7 @@ export class GameProfilePlayByPlayComponent implements OnInit {
   }
 
   init(game:Game){
-    debugger;
+    
     this.game = game;
     this.findStats(1);
   }
@@ -48,6 +55,7 @@ export class GameProfilePlayByPlayComponent implements OnInit {
       this.currentStats = stats;
       this.calculate( this.currentStats );
       this.stats.set( quarter, stats );
+      this.calculateStatsTeam(stats, quarter);
     }
   }
 
@@ -56,9 +64,7 @@ export class GameProfilePlayByPlayComponent implements OnInit {
   }
 
   calculate(stats:GameStat[]){
-
     stats.forEach( stat=> {
-
       let player:Player;
       if(stat.typeTeam == TypeTeam.LOCAL){
         player = this.game.local.players.find( player=> player.oid == stat.oidPlayer );
@@ -66,9 +72,31 @@ export class GameProfilePlayByPlayComponent implements OnInit {
         player = this.game.visitor.players.find( player=> player.oid == stat.oidPlayer );
       }
       stat.player = player;
-      console.log(stat);
     });
   }
+
+  calculateStatsTeam( stats:GameStat[], quarter ){
+    debugger;
+    let statsTeamLocal:GameStatPlayer= new GameStatPlayer();
+    let statsTeamVisitor:GameStatPlayer= new GameStatPlayer();
+    stats.forEach( stat=> {
+      if(stat.typeTeam == TypeTeam.LOCAL){
+        let statx = statsTeamLocal[ stat.type.toLocaleLowerCase() ] || 0;
+        statsTeamLocal[ stat.type.toLocaleLowerCase() ] = statx+ stat.value; 
+      }else{
+        let statx = statsTeamVisitor[ stat.type.toLocaleLowerCase() ] || 0;
+        statsTeamVisitor[ stat.type.toLocaleLowerCase() ] = statx+ stat.value; 
+      }
+    });
+
+    this.statsTeamLocal.set(  quarter, statsTeamLocal );
+    this.statsTeamVisitor.set(  quarter, statsTeamVisitor );
+    this.currentStatsLocal = statsTeamLocal;
+    this.currentStatsVisitor = statsTeamVisitor;
+  }
+
+
+
 
 
 
