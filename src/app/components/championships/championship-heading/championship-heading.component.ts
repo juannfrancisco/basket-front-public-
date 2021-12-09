@@ -9,9 +9,14 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ChampionshipHeadingComponent implements OnInit {
 
   @Input() championship:Championship;
+  toggleMenu:boolean;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  toggle(){
+    this.toggleMenu = !this.toggleMenu;
   }
 
 }

@@ -11,10 +11,15 @@ export class TeamHeadingComponent implements OnInit {
 
   @Input() team:Team;
   @Input() oidChampionship: string;
+  toggleMenu:boolean;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  toggle(){
+    this.toggleMenu = !this.toggleMenu;
   }
 
 }

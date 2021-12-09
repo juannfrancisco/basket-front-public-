@@ -20,10 +20,12 @@
     
     <nav class="content-filter">
         <div class="container">
-            <a href="#" class="content-filter__toggle"></a>
-            <ul class="content-filter__list">
+            <a class="content-filter__toggle" (click)="toggle()" >
+                <i class="bi bi-caret-down-fill"></i>
+            </a>
+            <ul class="content-filter__list" [class.content-filter__list--expanded]="toggleMenu" >
                 <li class="content-filter__item" [routerLinkActive]="['content-filter__item--active']">
-                    <a routerLink="info" class="content-filter__link">
+                    <a routerLink="overview" class="content-filter__link">
                         <small>Championship</small>Info</a>
                 </li>
                 <li class="content-filter__item" [routerLinkActive]="['content-filter__item--active']">

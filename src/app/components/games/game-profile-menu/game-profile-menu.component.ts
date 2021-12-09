@@ -9,10 +9,15 @@ import { Component, OnInit, Input } from '@angular/core';
 export class GameProfileMenuComponent implements OnInit {
 
   @Input() game:Game;
+  toggleMenu:boolean;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  toggle(){
+    this.toggleMenu = !this.toggleMenu;
   }
 
 }

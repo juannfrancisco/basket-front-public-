@@ -39,6 +39,7 @@ import { ChampionshipProfilePageComponent } from './pages/championship-profile-p
 import { ChampionshipHeadingComponent } from './components/championships/championship-heading/championship-heading.component';
 import { ChampionshipTeamsComponent } from './components/championships/championship-teams/championship-teams.component';
 import { ChampionshipGamesComponent } from './components/championships/championship-games/championship-games.component';
+import { ChampionshipOverviewComponent } from './components/championships/championship-overview/championship-overview.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { ChampionshipGamesComponent } from './components/championships/champions
     ChampionshipProfilePageComponent,
     ChampionshipHeadingComponent,
     ChampionshipTeamsComponent,
-    ChampionshipGamesComponent
+    ChampionshipGamesComponent,
+    ChampionshipOverviewComponent
   ],
   imports: [
     BrowserModule,
