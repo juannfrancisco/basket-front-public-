@@ -1,3 +1,4 @@
+import { GameProfileStatsComponent } from './components/games/game-profile-stats/game-profile-stats.component';
 import { ChampionshipOverviewComponent } from './components/championships/championship-overview/championship-overview.component';
 import { ChampionshipGamesComponent } from './components/championships/championship-games/championship-games.component';
 import { ChampionshipTeamsComponent } from './components/championships/championship-teams/championship-teams.component';
@@ -44,7 +45,8 @@ const routes: Routes = [
       {path: '', redirectTo:'overview', pathMatch: 'full' },
       {path: 'overview',component: GameProfileOverviewComponent},
       {path: 'box-score',component: GameProfileBoxScoreComponent},
-      {path: 'play-by-play',component: GameProfilePlayByPlayComponent}
+      {path: 'play-by-play',component: GameProfilePlayByPlayComponent},
+      {path: 'stats',component: GameProfileStatsComponent}
     ]
   }
 

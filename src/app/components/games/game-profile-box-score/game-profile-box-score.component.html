@@ -1,6 +1,6 @@
 <div class="row" *ngIf="game">
     <div class="content col-lg-12">
-        <app-team-box-score [team]="game.local" [typeTeam]="'LOCAL'"></app-team-box-score>
-        <app-team-box-score [team]="game.visitor" [typeTeam]="'VISITOR'"></app-team-box-score>
+        <app-team-box-score [isLoading]="isLoading" [team]="game.local" [typeTeam]="'LOCAL'"></app-team-box-score>
+        <app-team-box-score [isLoading]="isLoading" [team]="game.visitor" [typeTeam]="'VISITOR'"></app-team-box-score>
     </div>
 </div>

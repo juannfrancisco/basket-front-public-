@@ -1,0 +1,100 @@
+<div class="widget card card--has-table widget--sidebar widget-matchup">
+        <div class="widget__content card__content">
+            <div class="table-responsive">
+                <table class="table table table-hover alc-table-stats alc-table-stats--compact">
+                    <thead class="table-card-header">
+                        <tr>
+                            <th class="table-card-header__title">Matchup</th>
+                            <th>
+                                <img src="assets/images/samples/logos/alchemists_b_shield.png" alt="The Alchemists">
+                            </th>
+                            <th>
+                                <img src="assets/images/samples/logos/sharks_shield.png" alt="Sharks">
+                            </th>
+                        </tr>
+                        <tr *ngIf="isLoading">
+                            <td colspan="3" class="p-0 m-0" >
+                                <app-loading-nest></app-loading-nest>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="currentStatsLocal">
+                        <tr>
+                            <td class="alc-align-start alc-highlight-sm">FG Made-Attempted</td>
+                            <td class="alc-highlight-sm">{{(currentStatsLocal.pts2 || 0 )}} - {{(currentStatsLocal.pts2 || 0 ) + (currentStatsLocal.mpt2|| 0 ) }}</td>
+                            <td class="alc-highlight-sm">{{(currentStatsVisitor.pts2 || 0 )}} - {{(currentStatsVisitor.pts2 || 0 ) + (currentStatsVisitor.mpt2|| 0 ) }}</td>
+                        </tr>
+                        <tr>
+                            <td class="alc-align-start alc-highlight-sm">Field Goal %</td>
+                            <td class="alc-highlight-sm">{{currentStatsLocal.apts2}} %</td>
+                            <td class="alc-highlight-sm">{{currentStatsVisitor.apts2}} %</td>
+                        </tr>
+                        <tr>
+                            <td class="alc-align-start alc-highlight-sm">3PT Made-Attempted</td>
+                            <td class="alc-highlight-sm">{{(currentStatsLocal.pts3 || 0 )}} - {{(currentStatsLocal.pts3 || 0 ) + (currentStatsLocal.mpt3|| 0 ) }}</td>
+                            <td class="alc-highlight-sm">{{(currentStatsVisitor.pts3 || 0 )}} - {{(currentStatsVisitor.pts3 || 0 ) + (currentStatsVisitor.mpt3|| 0 ) }}</td>
+                        </tr>
+                        <tr>
+                            <td class="alc-align-start alc-highlight-sm">Three Point %</td>
+                            <td class="alc-highlight-sm">{{currentStatsLocal.apts3}} %</td>
+                            <td class="alc-highlight-sm">{{currentStatsVisitor.apts3}} %</td>
+                        </tr>
+                        <tr>
+                            <td class="alc-align-start alc-highlight-sm">FT Made-Attempted</td>
+                            <td class="alc-highlight-sm">{{(currentStatsLocal.pts1 || 0 )}} - {{(currentStatsLocal.pts1 || 0 ) + (currentStatsLocal.mpt1|| 0 ) }}</td>
+                            <td class="alc-highlight-sm">{{(currentStatsVisitor.pts1 || 0 )}} - {{(currentStatsVisitor.pts1 || 0 ) + (currentStatsVisitor.mpt1|| 0 ) }}</td>
+                        </tr>
+                        <tr>
+                            <td class="alc-align-start alc-highlight-sm">Free Throw %</td>
+                            <td class="alc-highlight-sm">{{currentStatsLocal.apts1}} %</td>
+                            <td class="alc-highlight-sm">{{currentStatsVisitor.apts1}} %</td>
+                        </tr>
+                        <tr>
+                            <td class="alc-align-start alc-highlight-sm">Total Rebounds</td>
+                            <td class="alc-highlight-sm">
+                                {{ (currentStatsLocal.or || 0) + (currentStatsLocal.dr || 0) }}
+                            </td>
+                            <td class="alc-highlight-sm">
+                                {{ (currentStatsVisitor.or || 0) + (currentStatsVisitor.dr || 0) }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="alc-align-start alc-indent">Offensive Rebounds</td>
+                            <td class="">{{currentStatsLocal.or || 0 }}</td>
+                            <td class="">{{currentStatsVisitor.or || 0 }}</td>
+                        </tr>
+                        <tr>
+                            <td class="alc-align-start alc-indent">Defensive Rebounds</td>
+                            <td class="">{{currentStatsLocal.dr || 0 }}</td>
+                            <td class="">{{currentStatsVisitor.dr || 0 }}</td>
+                        </tr>
+                        <tr>
+                            <td class="alc-align-start alc-highlight-sm">Assists</td>
+                            <td class="alc-highlight-sm">{{currentStatsLocal.ast || 0 }}</td>
+                            <td class="alc-highlight-sm">{{currentStatsVisitor.ast || 0 }}</td>
+                        </tr>
+                        <tr>
+                            <td class="alc-align-start alc-highlight-sm">Steals</td>
+                            <td class="alc-highlight-sm">{{currentStatsLocal.stl || 0 }}</td>
+                            <td class="alc-highlight-sm">{{currentStatsVisitor.stl || 0 }}</td>
+                        </tr>
+                        <tr>
+                            <td class="alc-align-start alc-highlight-sm">Blocks</td>
+                            <td class="alc-highlight-sm">{{currentStatsLocal.blk || 0 }}</td>
+                            <td class="alc-highlight-sm">{{currentStatsVisitor.blk || 0 }}</td>
+                        </tr>
+                        <tr>
+                            <td class="alc-align-start alc-highlight-sm">Points</td>
+                            <td class="alc-highlight-sm">{{currentStatsLocal.pts}}</td>
+                            <td class="alc-highlight-sm">{{currentStatsVisitor.pts}}</td>
+                        </tr>
+                        <tr>
+                            <td class="alc-align-start alc-highlight-sm">Personal Fouls</td>
+                            <td class="alc-highlight-sm">{{currentStatsLocal.pf}}</td>
+                            <td class="alc-highlight-sm">{{currentStatsVisitor.pf}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

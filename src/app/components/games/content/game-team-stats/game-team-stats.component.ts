@@ -1,8 +1,8 @@
-import { GamesService } from './../../../services/games.service';
-import { GameStatPlayer } from './../../../models/game-stat-player';
-import { Game } from './../../../models/game';
+import { GamesService } from './../../../../services/games.service';
+import { GameStatPlayer } from './../../../../models/game-stat-player';
+import { Game } from './../../../../models/game';
 import { Component, OnInit, Input } from '@angular/core';
-import { Player } from '../../../models/player';
+import { Player } from '../../../../models/player';
 
 @Component({
   selector: 'app-game-team-stats',

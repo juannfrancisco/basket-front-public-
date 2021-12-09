@@ -8,9 +8,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TeamBoxScoreComponent implements OnInit {
 
-
   @Input() team:Team;
   @Input() typeTeam:string;
+  @Input() isLoading:boolean;
 
   constructor() { }
 

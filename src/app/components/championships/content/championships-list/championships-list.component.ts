@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
-import { ChampionshipsService } from './../../../services/championships.service';
-import { Championship } from './../../../models/championship';
+import { ChampionshipsService } from './../../../../services/championships.service';
+import { Championship } from './../../../../models/championship';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

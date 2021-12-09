@@ -7,12 +7,12 @@ import { HeaderComponent } from './components/commons/header/header.component';
 import { FooterComponent } from './components/commons/footer/footer.component';
 import { HeaderMobileComponent } from './components/commons/header-mobile/header-mobile.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ChampionshipsListComponent } from './components/championships/championships-list/championships-list.component';
-import { GameLastResultComponent } from './components/games/game-last-result/game-last-result.component';
-import { GameNextComponent } from './components/games/game-next/game-next.component';
+import { ChampionshipsListComponent } from './components/championships/content/championships-list/championships-list.component';
+import { GameLastResultComponent } from './components/games/aside/game-last-result/game-last-result.component';
+import { GameNextComponent } from './components/games/aside/game-next/game-next.component';
 import { PlayerFeaturedComponent } from './components/players/player-featured/player-featured.component';
 import { ChampionshipsStandingsComponent } from './components/championships/championships-standings/championships-standings.component';
-import { GamesListComponent } from './components/games/games-list/games-list.component';
+import { GamesListComponent } from './components/games/content/games-list/games-list.component';
 import { TeamsListComponent } from './components/teams/teams-list/teams-list.component';
 import { TeamsPageComponent } from './components/teams/teams-page/teams-page.component';
 import { TeamProfilePageComponent } from './pages/team-profile-page/team-profile-page.component';
@@ -32,14 +32,17 @@ import { TeamBoxScoreComponent } from './components/teams/team-box-score/team-bo
 import { GameProfilePlayByPlayComponent } from './components/games/game-profile-play-by-play/game-profile-play-by-play.component';
 import { LoadingComponent } from './components/commons/loading/loading.component';
 import { LoadingNestComponent } from './components/commons/loading-nest/loading-nest.component';
-import { GameInformationComponent } from './components/games/game-information/game-information.component';
-import { GameTeamStatsComponent } from './components/games/game-team-stats/game-team-stats.component';
+import { GameInformationComponent } from './components/games/aside/game-information/game-information.component';
+import { GameTeamStatsComponent } from './components/games/content/game-team-stats/game-team-stats.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { ChampionshipProfilePageComponent } from './pages/championship-profile-page/championship-profile-page.component';
 import { ChampionshipHeadingComponent } from './components/championships/championship-heading/championship-heading.component';
 import { ChampionshipTeamsComponent } from './components/championships/championship-teams/championship-teams.component';
 import { ChampionshipGamesComponent } from './components/championships/championship-games/championship-games.component';
 import { ChampionshipOverviewComponent } from './components/championships/championship-overview/championship-overview.component';
+import { GameLeadersComponent } from './components/games/aside/game-leaders/game-leaders.component';
+import { GameMatchupComponent } from './components/games/aside/game-matchup/game-matchup.component';
+import { GameProfileStatsComponent } from './components/games/game-profile-stats/game-profile-stats.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +82,10 @@ import { ChampionshipOverviewComponent } from './components/championships/champi
     ChampionshipHeadingComponent,
     ChampionshipTeamsComponent,
     ChampionshipGamesComponent,
-    ChampionshipOverviewComponent
+    ChampionshipOverviewComponent,
+    GameLeadersComponent,
+    GameMatchupComponent,
+    GameProfileStatsComponent
   ],
   imports: [
     BrowserModule,

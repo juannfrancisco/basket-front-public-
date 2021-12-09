@@ -1,7 +1,7 @@
-import { Championship } from './../../../models/championship';
+import { Championship } from './../../../../models/championship';
 import { Router, ActivatedRoute } from '@angular/router';
-import { GamesService } from './../../../services/games.service';
-import { Game } from './../../../models/game';
+import { GamesService } from './../../../../services/games.service';
+import { Game } from './../../../../models/game';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({

@@ -13,6 +13,7 @@ import { Component, OnInit } from '@angular/core';
 export class GameProfileBoxScoreComponent implements OnInit {
 
   game: Game;
+  isLoading: boolean = true;
 
   constructor(
     private service: GamesService
@@ -23,8 +24,6 @@ export class GameProfileBoxScoreComponent implements OnInit {
       this.game = this.service.actualGame;
       this.getStatsPlayer(this.service.actualGame);
     } else {
-
-
       this.service.eventsGame.subscribe(game => {
         this.game = game;
         this.getStatsPlayer(game);
@@ -32,19 +31,23 @@ export class GameProfileBoxScoreComponent implements OnInit {
     }
   }
 
-
   async getStatsPlayer(game: Game) {
-    let stats: GameStatPlayer[] = await this.service.findStatsPlayer(game.oid, game.championship.oid).toPromise();
-  
-    this.initPlayers(game.local.players, stats);
-    this.initPlayers(game.visitor.players, stats);
+    try {
+      this.isLoading = true;
+      let stats: GameStatPlayer[] = await this.service.findStatsPlayer(game.oid, game.championship.oid).toPromise();
+      this.initPlayers(game.local.players, stats);
+      this.initPlayers(game.visitor.players, stats);
+      this.isLoading = false;
+    } catch (err) {
+      this.isLoading = false;
+    }
   }
 
   /**
    * 
    * @param players 
    */
-  initPlayers(players: Player[], stats:GameStatPlayer[]):void {
+  initPlayers(players: Player[], stats: GameStatPlayer[]): void {
 
     players.forEach(player => {
       stats.forEach(stat => {
@@ -65,7 +68,7 @@ export class GameProfileBoxScoreComponent implements OnInit {
         }
       });
     });
-    
+
   }
 
 }
