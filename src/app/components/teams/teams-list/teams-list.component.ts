@@ -1,7 +1,8 @@
+import { Championship } from './../../../models/championship';
 import { Team } from './../../../models/team';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TeamsService } from './../../../services/teams.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-teams-list',
@@ -10,8 +11,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeamsListComponent implements OnInit {
 
-  oidChampionship: string;
+  @Input() championship:Championship;
+  //oidChampionship: string;
   teams:Team[];
+  isLoading:boolean;
 
   constructor(
     private service: TeamsService,
@@ -20,7 +23,7 @@ export class TeamsListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.oidChampionship = this.route.snapshot.paramMap.get('idChampionship');
+    //this.oidChampionship = this.route.snapshot.paramMap.get('idChampionship');
     this.loadData();
   }
 
@@ -28,13 +31,14 @@ export class TeamsListComponent implements OnInit {
    * 
    */
   loadData(){
-    //this.showLoading( this.loadingService );
-    this.service.findAllByChampionship(this.oidChampionship).subscribe(data => {
+    //this.showLoading( this.loadingService );]
+    this.isLoading = true;
+    this.service.findAllByChampionship(this.championship.oid).subscribe(data => {
       this.teams = data;
       console.log(this.teams)
-      //this.hideLoading( this.loadingService );
+      this.isLoading = false;
     }, err => {
-      //this.hideLoading( this.loadingService );
+      this.isLoading = false;
       //this.showErrorMessage();
     });
   }

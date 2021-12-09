@@ -1,16 +1,16 @@
-import { constants } from './../../../../environments/constants';
-import { Player } from './../../../models/player';
+import { constants } from './../../../environments/constants';
 import { Router, ActivatedRoute } from '@angular/router';
-import { TeamsService } from './../../../services/teams.service';
+import { TeamsService } from './../../services/teams.service';
+import { Team } from './../../models/team';
 import { Component, OnInit } from '@angular/core';
-import { Team } from '../../../models/team';
+import { Player } from '../../models/player';
 
 @Component({
-  selector: 'app-teams-profile-page',
-  templateUrl: './teams-profile-page.component.html',
-  styleUrls: ['./teams-profile-page.component.css']
+  selector: 'app-team-profile-page',
+  templateUrl: './team-profile-page.component.html',
+  styleUrls: ['./team-profile-page.component.css']
 })
-export class TeamsProfilePageComponent implements OnInit {
+export class TeamProfilePageComponent implements OnInit {
 
   isLoading:boolean;
   oidChampionship: string;

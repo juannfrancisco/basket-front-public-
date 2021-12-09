@@ -1,3 +1,4 @@
+import { Subject, Observable } from 'rxjs';
 import { environment } from './../../environments/environment';
 import { Championship } from './../models/championship';
 import { HttpClient } from '@angular/common/http';
@@ -7,6 +8,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ChampionshipsService {
+
+  actualChampionship:Championship;
+  eventsChampionship = new Subject<Championship>();
 
   constructor( private http: HttpClient ) { }
 
@@ -29,5 +33,14 @@ export class ChampionshipsService {
 
   update( championship:Championship ){
     return this.http.post( environment.endpoint +  "championships", championship );
+  }
+
+  eventChampionship():Observable<Championship>{
+    return this.eventsChampionship.asObservable();
+  }
+
+  pushChampionship(data:Championship) {
+    this.actualChampionship = data;
+    this.eventsChampionship.next(data);
   }
 }

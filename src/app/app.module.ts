@@ -7,7 +7,6 @@ import { HeaderComponent } from './components/commons/header/header.component';
 import { FooterComponent } from './components/commons/footer/footer.component';
 import { HeaderMobileComponent } from './components/commons/header-mobile/header-mobile.component';
 import { HttpClientModule } from '@angular/common/http';
-import { HomeComponent } from './components/home/home.component';
 import { ChampionshipsListComponent } from './components/championships/championships-list/championships-list.component';
 import { GameLastResultComponent } from './components/games/game-last-result/game-last-result.component';
 import { GameNextComponent } from './components/games/game-next/game-next.component';
@@ -16,10 +15,10 @@ import { ChampionshipsStandingsComponent } from './components/championships/cham
 import { GamesListComponent } from './components/games/games-list/games-list.component';
 import { TeamsListComponent } from './components/teams/teams-list/teams-list.component';
 import { TeamsPageComponent } from './components/teams/teams-page/teams-page.component';
-import { TeamsProfilePageComponent } from './components/teams/teams-profile-page/teams-profile-page.component';
+import { TeamProfilePageComponent } from './pages/team-profile-page/team-profile-page.component';
 import { TeamHeadingComponent } from './components/teams/team-heading/team-heading.component';
 import { TeamLastGameComponent } from './components/teams/team-last-game/team-last-game.component';
-import { GameProfilePageComponent } from './components/game-profile-page/game-profile-page.component';
+import { GameProfilePageComponent } from './pages/game-profile-page/game-profile-page.component';
 import { GameProfileMenuComponent } from './components/games/game-profile-menu/game-profile-menu.component';
 import { GameProfileBoxScoreComponent } from './components/games/game-profile-box-score/game-profile-box-score.component';
 import { GamesPageComponent } from './components/games/games-page/games-page.component';
@@ -35,6 +34,11 @@ import { LoadingComponent } from './components/commons/loading/loading.component
 import { LoadingNestComponent } from './components/commons/loading-nest/loading-nest.component';
 import { GameInformationComponent } from './components/games/game-information/game-information.component';
 import { GameTeamStatsComponent } from './components/games/game-team-stats/game-team-stats.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import { ChampionshipProfilePageComponent } from './pages/championship-profile-page/championship-profile-page.component';
+import { ChampionshipHeadingComponent } from './components/championships/championship-heading/championship-heading.component';
+import { ChampionshipTeamsComponent } from './components/championships/championship-teams/championship-teams.component';
+import { ChampionshipGamesComponent } from './components/championships/championship-games/championship-games.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +46,6 @@ import { GameTeamStatsComponent } from './components/games/game-team-stats/game-
     HeaderComponent,
     FooterComponent,
     HeaderMobileComponent,
-    HomeComponent,
     ChampionshipsListComponent,
     GameLastResultComponent,
     GameNextComponent,
@@ -51,7 +54,7 @@ import { GameTeamStatsComponent } from './components/games/game-team-stats/game-
     GamesListComponent,
     TeamsListComponent,
     TeamsPageComponent,
-    TeamsProfilePageComponent,
+    TeamProfilePageComponent,
     TeamHeadingComponent,
     TeamLastGameComponent,
     GameProfilePageComponent,
@@ -69,7 +72,12 @@ import { GameTeamStatsComponent } from './components/games/game-team-stats/game-
     LoadingComponent,
     LoadingNestComponent,
     GameInformationComponent,
-    GameTeamStatsComponent
+    GameTeamStatsComponent,
+    HomePageComponent,
+    ChampionshipProfilePageComponent,
+    ChampionshipHeadingComponent,
+    ChampionshipTeamsComponent,
+    ChampionshipGamesComponent
   ],
   imports: [
     BrowserModule,

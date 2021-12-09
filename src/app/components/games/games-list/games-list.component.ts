@@ -1,7 +1,8 @@
+import { Championship } from './../../../models/championship';
 import { Router, ActivatedRoute } from '@angular/router';
 import { GamesService } from './../../../services/games.service';
 import { Game } from './../../../models/game';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-games-list',
@@ -10,8 +11,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GamesListComponent implements OnInit {
 
-  oidChampionship: string;
+  @Input() championship:Championship;
   games:Game[];
+  isLoading:boolean= true;
 
   constructor(
     private service: GamesService,
@@ -20,7 +22,6 @@ export class GamesListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.oidChampionship = this.route.snapshot.paramMap.get('idChampionship');
     this.loadData();
   }
 
@@ -29,19 +30,18 @@ export class GamesListComponent implements OnInit {
    * 
    */
   loadData(){
-    //this.showLoading( this.loadingService );
-    this.service.findAll(this.oidChampionship).subscribe(data => {
+    this.isLoading = true;
+    this.service.findAll(this.championship.oid).subscribe(data => {
       this.games = data;
       console.log(this.games);
-      //this.hideLoading( this.loadingService );
+      this.isLoading = false;
     }, err => {
-      //this.hideLoading( this.loadingService );
-      //this.showErrorMessage();
+      this.isLoading = false;
     });
   }
 
   view(game:Game):void{
-    this.router.navigateByUrl( this.oidChampionship+"/games/"+game.oid )
+    this.router.navigateByUrl( this.championship.oid+"/games/"+game.oid )
   }
 
 }

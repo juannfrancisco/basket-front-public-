@@ -10,7 +10,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameProfileOverviewComponent implements OnInit {
 
-
   game: Game;
 
   constructor(
@@ -29,10 +28,6 @@ export class GameProfileOverviewComponent implements OnInit {
 
   init(game:Game){    
     this.game = game;
-    //this.getStatsPlayer(this.game);
   }
-
-
-
 
 }

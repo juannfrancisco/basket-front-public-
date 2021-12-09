@@ -4,11 +4,10 @@
     </header>
 </div>
 <div class="card">
+    <app-loading-nest *ngIf="isLoading"></app-loading-nest>
     <div class="card__content">
         <div class="posts__inner">
             <div class="posts__excerpt">
-
-
                 <div class="row">
                     <div class="col-xs-12 col-md-6" *ngFor="let game of games">
                         <aside class="widget card widget--sidebar widget-game-result" (click)="view(game)">

@@ -1,0 +1,47 @@
+<div class="page-heading">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 offset-md-1">
+                    <h1 class="page-heading__title">{{championship.name}}</h1>
+                    <ol class="page-heading__breadcrumb breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a routerLink="/">Inicio</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a routerLink="/{{championship.oid}}/teams">Equipos</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">{{championship.name}}</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <nav class="content-filter">
+        <div class="container">
+            <a href="#" class="content-filter__toggle"></a>
+            <ul class="content-filter__list">
+                <li class="content-filter__item" [routerLinkActive]="['content-filter__item--active']">
+                    <a routerLink="info" class="content-filter__link">
+                        <small>Championship</small>Info</a>
+                </li>
+                <li class="content-filter__item" [routerLinkActive]="['content-filter__item--active']">
+                    <a routerLink="teams" class="content-filter__link">
+                        <small>Championship</small>Equipos</a>
+                </li>
+                <li class="content-filter__item" [routerLinkActive]="['content-filter__item--active']">
+                    <a routerLink="games" class="content-filter__link">
+                        <small>Championship </small>Partidos</a>
+                </li>
+                <li class="content-filter__item" [routerLinkActive]="['content-filter__item--active']">
+                    <a routerLink="last-results" class="content-filter__link">
+                        <small>Championship</small>Últimos Resultados</a>
+                </li>
+                <li class="content-filter__item" [routerLinkActive]="['content-filter__item--active']">
+                    <a routerLink="schedule" class="content-filter__link">
+                        <small>Championship</small>Programación</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
