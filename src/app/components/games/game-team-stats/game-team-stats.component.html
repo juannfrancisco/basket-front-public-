@@ -1,0 +1,141 @@
+<div class="alc-event-stats-box card card--no-paddings">
+
+    <!-- Header -->
+    <header class="widget__title card__header alc-teams-legend">
+        <h4 class="alc-teams-legend__title">Match Team Stats</h4>
+        <div class="alc-teams-legend__info">
+            <!-- Teams -->
+            <div class="alc-teams-legend__teams">
+
+                <!-- Team #0 -->
+                <div class="alc-teams-legend__team">
+                    <span class="alc-teams-legend__team-color alc-teams-legend__team-color--color-primary"></span>
+                    <img src="assets/images/samples/logos/alchemists_b_shield.png" class="alc-teams-legend__team-logo" alt="The Alchemists">
+                </div>
+                <!-- Team #0 / End -->
+                <!-- Team #1 -->
+                <div class="alc-teams-legend__team">
+                    <span class="alc-teams-legend__team-color alc-teams-legend__team-color--color-info"></span>
+                    <img src="assets/images/samples/logos/sharks_shield.png" class="alc-teams-legend__team-logo" alt="Sharks">
+                </div>
+                <!-- Team #1 / End -->
+
+            </div>
+            <!-- Teams / End -->
+
+            <a href="event-team-stats.html" class="btn btn-default btn-outline btn-xs">Full Team Stats</a>
+        </div>
+    </header>
+    <!-- Header / End -->
+
+    <!-- Team & Result -->
+    <div class="alc-event-stats-box__content card__content">
+
+        <app-loading-nest *ngIf="isLoading"></app-loading-nest>
+        <!-- Event Statistics -->
+        <div class="alc-event-stats-box__section">
+            <header class="alc-event-stats-box__subheader card__subheader card__subheader--sm card__subheader--clean card__subheader--nomargins">
+                <h5 class="alc-event-stats-box__subtitle">Main Statistics</h5>
+            </header>
+            <div class="alc-event-stats-box__section-inner alc-event-stats-box__section-inner--lg">
+
+                <!-- Progress Stats Table -->
+                <table class="progress-table progress-table--sm-space progress-table--fullwidth">
+                    <tbody>
+
+                        <tr>
+                            <td class="progress-table__progress-label ">{{ptsLocal}}</td>
+                            <td class="progress-table__progress-bar progress-table__progress-bar--first">
+                                <div class="progress">
+                                    <div class="progress__bar" [style.width]="((ptsLocal *100 ) / (ptsLocal+ptsVisitor))+'%'" role="progressbar" aria-valuenow="22"
+                                        aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </td>
+                            <td class="progress-table__title text-uppercase">Points</td>
+                            <td class="progress-table__progress-bar progress-table__progress-bar--second">
+                                <div class="progress">
+                                    <div class="progress__bar progress__bar--info" [style.width]="((ptsVisitor *100 ) / (ptsLocal+ptsVisitor))+'%'" role="progressbar"
+                                        aria-valuenow="36" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </td>
+                            <td class="progress-table__progress-label progress-table__progress-label--highlight">{{ptsVisitor}}</td>
+                        </tr>
+
+                        <tr>
+                            <td class="progress-table__progress-label ">{{astLocal}}</td>
+                            <td class="progress-table__progress-bar progress-table__progress-bar--first">
+                                <div class="progress">
+                                    <div class="progress__bar" [style.width]="((astLocal *100 ) / (astLocal+astVisitor))+'%'" role="progressbar" aria-valuenow="22"
+                                        aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </td>
+                            <td class="progress-table__title text-uppercase">Assists</td>
+                            <td class="progress-table__progress-bar progress-table__progress-bar--second">
+                                <div class="progress">
+                                    <div class="progress__bar progress__bar--info" [style.width]="((astVisitor *100 ) / (astLocal+astVisitor))+'%'" role="progressbar"
+                                        aria-valuenow="36" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </td>
+                            <td class="progress-table__progress-label progress-table__progress-label--highlight">{{astVisitor}}</td>
+                        </tr>
+
+                        <tr>
+                            <td class="progress-table__progress-label progress-table__progress-label--highlight">{{rbLocal}}</td>
+                            <td class="progress-table__progress-bar progress-table__progress-bar--first">
+                                <div class="progress">
+                                    <div class="progress__bar" [style.width]="((rbLocal *100 ) / (rbLocal+rbVisitor))+'%'" role="progressbar" aria-valuenow="35"
+                                        aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </td>
+                            <td class="progress-table__title text-uppercase">Rebounds</td>
+                            <td class="progress-table__progress-bar progress-table__progress-bar--second">
+                                <div class="progress">
+                                    <div class="progress__bar progress__bar--info" [style.width]="((rbVisitor *100 ) / (rbLocal+rbVisitor))+'%'" role="progressbar"
+                                        aria-valuenow="18" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </td>
+                            <td class="progress-table__progress-label ">{{rbVisitor}}</td>
+                        </tr>
+
+                        <tr>
+                            <td class="progress-table__progress-label progress-table__progress-label--highlight">{{blkLocal}}</td>
+                            <td class="progress-table__progress-bar progress-table__progress-bar--first">
+                                <div class="progress">
+                                    <div class="progress__bar" [style.width]="((blkLocal *100 ) / (blkVisitor+blkLocal))+'%'" role="progressbar" aria-valuenow="26"
+                                        aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </td>
+                            <td class="progress-table__title text-uppercase">Blocks</td>
+                            <td class="progress-table__progress-bar progress-table__progress-bar--second">
+                                <div class="progress">
+                                    <div class="progress__bar progress__bar--info" [style.width]="((blkVisitor *100 ) / (blkLocal+blkVisitor))+'%'" role="progressbar"
+                                        aria-valuenow="23" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </td>
+                            <td class="progress-table__progress-label ">{{blkVisitor}}</td>
+                        </tr>
+
+                        <tr>
+                            <td class="progress-table__progress-label progress-table__progress-label--highlight">{{pfLocal}}</td>
+                            <td class="progress-table__progress-bar progress-table__progress-bar--first">
+                                <div class="progress">
+                                    <div class="progress__bar" [style.width]="((pfLocal *100 ) / (pfLocal+pfVisitor))+'%'" role="progressbar" aria-valuenow="18"
+                                        aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </td>
+                            <td class="progress-table__title text-uppercase">Fouls</td>
+                            <td class="progress-table__progress-bar progress-table__progress-bar--second">
+                                <div class="progress">
+                                    <div class="progress__bar progress__bar--info" [style.width]="((pfVisitor *100 ) / (pfLocal+pfVisitor))+'%'" role="progressbar"
+                                        aria-valuenow="14" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </td>
+                            <td class="progress-table__progress-label ">{{pfVisitor}}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <!-- Progress Stats Table / End -->
+
+            </div>
+        </div>

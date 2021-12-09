@@ -1,8 +1,4 @@
-<div class="site-content pt-0 pb-0" *ngIf="!isLoading">
-    <div class="container-fluid bg-white text-center p-4">
-        <img src="assets/images/loading/basket-loading4.gif" class="p-4" >
-    </div>
-</div>
+<app-loading *ngIf="!isLoading"></app-loading>
 
 <ng-container *ngIf="isLoading">
     <div class="alc-event-header alc-event-header--layout-1">

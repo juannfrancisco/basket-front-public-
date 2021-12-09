@@ -31,6 +31,10 @@ import { TeamLastResultsComponent } from './components/teams/team-last-results/t
 import { TeamScheduleComponent } from './components/teams/team-schedule/team-schedule.component';
 import { TeamBoxScoreComponent } from './components/teams/team-box-score/team-box-score.component';
 import { GameProfilePlayByPlayComponent } from './components/games/game-profile-play-by-play/game-profile-play-by-play.component';
+import { LoadingComponent } from './components/commons/loading/loading.component';
+import { LoadingNestComponent } from './components/commons/loading-nest/loading-nest.component';
+import { GameInformationComponent } from './components/games/game-information/game-information.component';
+import { GameTeamStatsComponent } from './components/games/game-team-stats/game-team-stats.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +65,11 @@ import { GameProfilePlayByPlayComponent } from './components/games/game-profile-
     TeamLastResultsComponent,
     TeamScheduleComponent,
     TeamBoxScoreComponent,
-    GameProfilePlayByPlayComponent
+    GameProfilePlayByPlayComponent,
+    LoadingComponent,
+    LoadingNestComponent,
+    GameInformationComponent,
+    GameTeamStatsComponent
   ],
   imports: [
     BrowserModule,

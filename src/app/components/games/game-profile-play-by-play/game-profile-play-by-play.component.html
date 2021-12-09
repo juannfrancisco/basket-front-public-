@@ -32,9 +32,9 @@
                 </li>
             </ul>
             <div class="tab-content card__content">
-                <div role="tabpanel" class="tab-pane fade show active" id="tab-quarter-1">
-
-                    <div class="table-responsive">
+                <div role="tabpanel" class="tab-pane fade show active">
+                    <app-loading-nest *ngIf="isloading"></app-loading-nest>
+                    <div class="table-responsive" *ngIf="!isloading">
                         <table class="table table-hover alc-table-stats alc-table-stats__play-by-play">
                             <thead>
                                 <tr>
@@ -49,7 +49,7 @@
                                     <td class="alc-align-start" [class.alc-highlight]="stat.typeTeam=='LOCAL'">
                                         <img src="assets/images/samples/logos/alchemists_b_shield.png" alt="" class="alc-team-img"> {{stat.type}} {{stat.value}}: {{stat.player?.name}} {{stat.player?.lastName}}
                                     </td>
-                                    <td class="alc-align-end alc-highlight">0 - 0</td>
+                                    <td class="alc-align-end" [class.alc-highlight]="stat.typeTeam=='LOCAL'">0 - 0</td>
                                 </tr>
                                 <tr>
                                     <td class="alc-align-start alc-highlight-sm alc-highlight">0:00</td>
@@ -68,7 +68,7 @@
     </div>
 
 
-    <div class="sidebar col-lg-4" >
+    <div class="sidebar col-lg-4">
 
         <div class="widget card card--has-table widget--sidebar widget-matchup">
             <div class="widget__content card__content">
@@ -84,45 +84,50 @@
                                     <img src="assets/images/samples/logos/sharks_shield.png" alt="Sharks">
                                 </th>
                             </tr>
+                            <tr *ngIf="isloading">
+                                <td colspan="3" class="p-0 m-0" >
+                                    <app-loading-nest></app-loading-nest>
+                                </td>
+                            </tr>
                         </thead>
-                        <tbody>
+                        <tbody *ngIf="currentStatsLocal">
                             <tr>
                                 <td class="alc-align-start alc-highlight-sm">FG Made-Attempted</td>
-                                <td class="alc-highlight-sm">36-80</td>
-                                <td class="alc-highlight-sm">42-79</td>
+                                <td class="alc-highlight-sm">{{(currentStatsLocal.pts2 || 0 )}} - {{(currentStatsLocal.pts2 || 0 ) + (currentStatsLocal.mpt2|| 0 ) }}</td>
+                                <td class="alc-highlight-sm">{{(currentStatsVisitor.pts2 || 0 )}} - {{(currentStatsVisitor.pts2 || 0 ) + (currentStatsVisitor.mpt2|| 0 ) }}</td>
                             </tr>
                             <tr>
                                 <td class="alc-align-start alc-highlight-sm">Field Goal %</td>
-                                <td class="alc-highlight-sm">45.0</td>
-                                <td class="alc-highlight-sm">53.2</td>
+                                <td class="alc-highlight-sm">{{currentStatsLocal.apts2}} %</td>
+                                <td class="alc-highlight-sm">{{currentStatsVisitor.apts2}} %</td>
                             </tr>
                             <tr>
                                 <td class="alc-align-start alc-highlight-sm">3PT Made-Attempted</td>
-                                <td class="alc-highlight-sm">10-29</td>
-                                <td class="alc-highlight-sm">11-24</td>
+                                <td class="alc-highlight-sm">{{(currentStatsLocal.pts3 || 0 )}} - {{(currentStatsLocal.pts3 || 0 ) + (currentStatsLocal.mpt3|| 0 ) }}</td>
+                                <td class="alc-highlight-sm">{{(currentStatsVisitor.pts3 || 0 )}} - {{(currentStatsVisitor.pts3 || 0 ) + (currentStatsVisitor.mpt3|| 0 ) }}</td>
                             </tr>
                             <tr>
                                 <td class="alc-align-start alc-highlight-sm">Three Point %</td>
-                                <td class="alc-highlight-sm">34.5</td>
-                                <td class="alc-highlight-sm">45.8</td>
+                                <td class="alc-highlight-sm">{{currentStatsLocal.apts3}} %</td>
+                                <td class="alc-highlight-sm">{{currentStatsVisitor.apts3}} %</td>
                             </tr>
                             <tr>
                                 <td class="alc-align-start alc-highlight-sm">FT Made-Attempted</td>
-                                <td class="alc-highlight-sm">23-29</td>
-                                <td class="alc-highlight-sm">20-25</td>
+                                <td class="alc-highlight-sm">{{(currentStatsLocal.pts1 || 0 )}} - {{(currentStatsLocal.pts1 || 0 ) + (currentStatsLocal.mpt1|| 0 ) }}</td>
+                                <td class="alc-highlight-sm">{{(currentStatsVisitor.pts1 || 0 )}} - {{(currentStatsVisitor.pts1 || 0 ) + (currentStatsVisitor.mpt1|| 0 ) }}</td>
                             </tr>
                             <tr>
                                 <td class="alc-align-start alc-highlight-sm">Free Throw %</td>
-                                <td class="alc-highlight-sm">79.3</td>
-                                <td class="alc-highlight-sm">80.0</td>
+                                <td class="alc-highlight-sm">{{currentStatsLocal.apts1}} %</td>
+                                <td class="alc-highlight-sm">{{currentStatsVisitor.apts1}} %</td>
                             </tr>
                             <tr>
                                 <td class="alc-align-start alc-highlight-sm">Total Rebounds</td>
                                 <td class="alc-highlight-sm">
-                                    {{ (currentStatsLocal.or || 0) +  (currentStatsLocal.dr || 0) }}
+                                    {{ (currentStatsLocal.or || 0) + (currentStatsLocal.dr || 0) }}
                                 </td>
                                 <td class="alc-highlight-sm">
-                                    {{ (currentStatsVisitor.or || 0) +  (currentStatsVisitor.dr || 0) }}
+                                    {{ (currentStatsVisitor.or || 0) + (currentStatsVisitor.dr || 0) }}
                                 </td>
                             </tr>
                             <tr>
@@ -137,7 +142,7 @@
                             </tr>
                             <tr>
                                 <td class="alc-align-start alc-highlight-sm">Assists</td>
-                                <td class="alc-highlight-sm">{{currentStatsLocal.ast  || 0 }}</td>
+                                <td class="alc-highlight-sm">{{currentStatsLocal.ast || 0 }}</td>
                                 <td class="alc-highlight-sm">{{currentStatsVisitor.ast || 0 }}</td>
                             </tr>
                             <tr>

@@ -5,6 +5,7 @@ import { GamesService } from './../../../services/games.service';
 import { Game } from './../../../models/game';
 import { Component, OnInit } from '@angular/core';
 import { Player } from '../../../models/player';
+import { TypeStat } from '../../../models/type-stat';
 
 @Component({
   selector: 'app-game-profile-play-by-play',
@@ -19,6 +20,7 @@ export class GameProfilePlayByPlayComponent implements OnInit {
   currentStatsVisitor:GameStatPlayer;
   quarter:number;
   stats:Map<number, GameStat[]> = new Map<number, GameStat[]>();
+  isloading:boolean= true;
 
   statsTeamLocal:Map<number, GameStatPlayer> = new Map<number, GameStatPlayer>();
   statsTeamVisitor:Map<number, GameStatPlayer> = new Map<number, GameStatPlayer>();
@@ -46,9 +48,12 @@ export class GameProfilePlayByPlayComponent implements OnInit {
 
 
   async findStats(quarter:number){
+    this.isloading = true;
     this.quarter = quarter;
     if( this.stats.has(quarter) ){
       this.currentStats = this.stats.get(quarter);
+      this.currentStatsLocal = this.statsTeamLocal.get(quarter);
+      this.currentStatsVisitor = this.statsTeamVisitor.get(quarter);
     }else{
       let stats = await this.service.findStatsByQuarter( this.game.oid, this.game.championship.oid, quarter ).toPromise();
       stats = stats.sort((a, b) => (b.quarterTimeText.localeCompare(a.quarterTimeText)));
@@ -57,6 +62,7 @@ export class GameProfilePlayByPlayComponent implements OnInit {
       this.stats.set( quarter, stats );
       this.calculateStatsTeam(stats, quarter);
     }
+    this.isloading = false;
   }
 
   viewQuarter( quarter:number ){
@@ -75,27 +81,67 @@ export class GameProfilePlayByPlayComponent implements OnInit {
     });
   }
 
+
+  /**
+   * 
+   * @param stats 
+   * @param quarter 
+   */
   calculateStatsTeam( stats:GameStat[], quarter ){
-    debugger;
     let statsTeamLocal:GameStatPlayer= new GameStatPlayer();
     let statsTeamVisitor:GameStatPlayer= new GameStatPlayer();
     stats.forEach( stat=> {
+      let flagPts:boolean = false;
+      if( stat.type == TypeStat.PTS || stat.type == TypeStat.MPT ){
+        flagPts = true;
+      }
+
       if(stat.typeTeam == TypeTeam.LOCAL){
         let statx = statsTeamLocal[ stat.type.toLocaleLowerCase() ] || 0;
-        statsTeamLocal[ stat.type.toLocaleLowerCase() ] = statx+ stat.value; 
+        statsTeamLocal[ stat.type.toLocaleLowerCase() ] = statx+ stat.value;
+        if(flagPts){
+          let statxx = statsTeamLocal[ stat.type.toLocaleLowerCase() + stat.value ] || 0;
+          statsTeamLocal[ stat.type.toLocaleLowerCase() + stat.value ] = statxx+ stat.value;
+        }
+        
       }else{
         let statx = statsTeamVisitor[ stat.type.toLocaleLowerCase() ] || 0;
-        statsTeamVisitor[ stat.type.toLocaleLowerCase() ] = statx+ stat.value; 
+        statsTeamVisitor[ stat.type.toLocaleLowerCase() ] = statx+ stat.value;
+        if(flagPts){
+          let statxx = statsTeamVisitor[ stat.type.toLocaleLowerCase() + stat.value ] || 0;
+          statsTeamVisitor[ stat.type.toLocaleLowerCase() + stat.value ] = statxx+ stat.value;
+        }
       }
     });
+
+    statsTeamLocal.apts1= this.calculateAttemp( statsTeamLocal.pts1, statsTeamLocal.mpt1 );
+    statsTeamLocal.apts2= this.calculateAttemp( statsTeamLocal.pts2, statsTeamLocal.mpt2 );
+    statsTeamLocal.apts3= this.calculateAttemp( statsTeamLocal.pts3, statsTeamLocal.mpt3 );
+
+    statsTeamVisitor.apts1= this.calculateAttemp( statsTeamVisitor.pts1, statsTeamVisitor.mpt1 );
+    statsTeamVisitor.apts2= this.calculateAttemp( statsTeamVisitor.pts2, statsTeamVisitor.mpt2 );
+    statsTeamVisitor.apts3= this.calculateAttemp( statsTeamVisitor.pts3, statsTeamVisitor.mpt3 );
+
+
+
+
 
     this.statsTeamLocal.set(  quarter, statsTeamLocal );
     this.statsTeamVisitor.set(  quarter, statsTeamVisitor );
     this.currentStatsLocal = statsTeamLocal;
     this.currentStatsVisitor = statsTeamVisitor;
+
+    console.log(statsTeamLocal);
+    console.log(statsTeamVisitor);
   }
 
 
+  calculateAttemp( pts:number, mpt:number ){
+    if (pts != 0 || mpt != 0) {
+      return Math.round((pts * 100) / (pts + mpt))
+    }
+    return 0;
+  }
 
 
 

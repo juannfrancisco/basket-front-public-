@@ -24,21 +24,21 @@ export class GameStatPlayer {
     pf:number;
 
     constructor(){
-        /**this.PTS=0;
-        this.PTS1=0;
-        this.PTS2=0;
-        this.PTS3=0;
-        this.MPT=0;
-        this.MPT1=0;
-        this.MPT2=0;
-        this.MPT3=0;
-        this.OR=0;
-        this.AST=0;
-        this.MAS=0;
-        this.DR=0;
-        this.STL=0;
-        this.BLK=0;
-        this.PF=0;*/
+        this.pts=0;
+        this.pts1=0;
+        this.pts2=0;
+        this.pts3=0;
+        this.mpt=0;
+        this.mpt1=0;
+        this.mpt2=0;
+        this.mpt3=0;
+        this.or=0;
+        this.ast=0;
+        this.mas=0;
+        this.dr=0;
+        this.stl=0;
+        this.blk=0;
+        this.pf=0;
     }
 
 }

@@ -1,0 +1,63 @@
+<aside class="widget widget--sidebar card card--no-paddings widget-event-info" *ngIf="game">
+    <div class="widget__title card__header">
+        <h4>Información del Juego</h4>
+    </div>
+    <div class="widget__content card__content">
+
+        <figure class="alc-event-img">
+            <img src="assets/images/game.jpeg" >
+        </figure>
+        <ul class="alc-event-info list-unstyled">
+
+            <li class="alc-event-info__item">
+                <span class="alc-event-info__icon">
+                    <svg role="img" class="df-icon df-icon--map-pin-o">
+                        <use xlink:href="assets/images/icons-basket.svg#map-pin-o" />
+                    </svg>
+                </span>
+                <span class="alc-event-info__value"> {{game.court?.name}}</span>
+            </li>
+            <li class="alc-event-info__item">
+                <span class="alc-event-info__icon">
+                    <svg role="img" class="df-icon df-icon--trophy-o">
+                        <use xlink:href="assets/images/icons-basket.svg#trophy-o" />
+                    </svg>
+                </span>
+                <span class="alc-event-info__value">{{game.championship?.name}}</span>
+            </li>
+            <li class="alc-event-info__item">
+                <span class="alc-event-info__icon">
+                    <svg role="img" class="df-icon df-icon--calendar-o">
+                        <use xlink:href="assets/images/icons-basket.svg#calendar-o" />
+                    </svg>
+                </span>
+                <span class="alc-event-info__value">{{game.date | date}} a las {{game.date | date :'HH:mm'}}</span>
+            </li>
+            <li class="alc-event-info__item">
+                <span class="alc-event-info__icon">
+                    <svg role="img" class="df-icon df-icon--whistle-o">
+                        <use xlink:href="assets/images/icons-basket.svg#whistle-o" />
+                    </svg>
+                </span>
+                <span class="alc-event-info__value">Mark Refree &amp; Jake Swanson</span>
+            </li>
+            <li class="alc-event-info__item">
+                <span class="alc-event-info__icon">
+                    <svg role="img" class="df-icon df-icon--person-o">
+                        <use xlink:href="assets/images/icons-basket.svg#person-o" />
+                    </svg>
+                </span>
+                <span class="alc-event-info__value">1.200 Attendance (2.000 Capacity)</span>
+            </li>
+
+            <li class="alc-event-info__item alc-event-info__item--desc">
+                <span class="alc-event-info__label">Información adicional:</span>
+                <span class="alc-event-info__desc">
+                    Todos Los jugadores y equipo tecnico de cada equipo debera presentar su pase de movilidad para poder ingresar al recinto y participar del juego.
+                </span>
+            </li>
+
+        </ul>
+
+    </div>
+</aside>
