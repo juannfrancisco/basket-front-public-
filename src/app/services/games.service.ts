@@ -1,9 +1,10 @@
+import { GameState } from './../models/game-state';
 import { ScoreboardItem } from './../models/scoreboard-item';
 import { GameStatPlayer } from './../models/game-stat-player';
 import { GameStat } from './../models/game-stat';
 import { environment } from './../../environments/environment';
 import { Game } from './../models/game';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject, BehaviorSubject, Observable } from 'rxjs';
 
@@ -20,6 +21,13 @@ export class GamesService {
 
   findAll(oidChampionship:string){
     return this.http.get<Game[]>( environment.endpoint + "championships/" + oidChampionship + "/games" );
+  }
+
+
+  findAllByState(oidChampionship:string, state:GameState){
+    let params = new HttpParams();
+    params = params.append('state', state);
+    return this.http.get<Game[]>( environment.endpoint + "championships/" + oidChampionship + "/games", {params:params} );
   }
 
   findById( oid:string , oidChampionship:string){

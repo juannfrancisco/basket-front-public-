@@ -1,3 +1,4 @@
+import { GameState } from './../../../models/game-state';
 import { Championship } from './../../../models/championship';
 import { Team } from './../../../models/team';
 import { Router, ActivatedRoute } from '@angular/router';

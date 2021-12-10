@@ -11,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class ChampionshipsListComponent implements OnInit {
 
   championships:Championship[];
+  isLoading:boolean=true;
 
   constructor( 
     private service: ChampionshipsService,
@@ -25,12 +26,12 @@ export class ChampionshipsListComponent implements OnInit {
      * 
      */
     loadData(){
-      //this.showLoading( this.loadingService );
+      this.isLoading = true;
       this.service.findAll().subscribe(data => {
         this.championships = data;
-        //this.hideLoading( this.loadingService );
+        this.isLoading = false;
       }, err => {
-        //this.hideLoading( this.loadingService );
+        this.isLoading = false;
         //this.showErrorMessage();
       });
     }

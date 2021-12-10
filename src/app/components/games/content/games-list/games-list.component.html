@@ -1,6 +1,15 @@
 <div class="card card--clean">
     <header class="card__header card__header--has-filter">
-        <h4>Partidos</h4>
+        <h4>Proximos Partidos</h4>
+        <ul *ngIf="isLoading" class="category-filter category-filter--featured">
+            <li class="category-filter__item">
+                <div class="spinner" role="spinner">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
     </header>
 </div>
 <div class="card">
@@ -53,13 +62,8 @@
                                 </div>
                             </div>
                         </aside>
-
-
-
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>

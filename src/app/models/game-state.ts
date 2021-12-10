@@ -1,5 +1,5 @@
 export enum GameState{
-    PENDING = "LOCAL",
-    IN_PROGRESS = "VISITOR",
+    PENDING = "PENDING",
+    IN_PROGRESS = "IN_PROGRESS",
     FINALIZED= "FINALIZED"
 }

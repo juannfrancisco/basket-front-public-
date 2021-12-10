@@ -1,3 +1,4 @@
+import { GameState } from './../../../../models/game-state';
 import { Championship } from './../../../../models/championship';
 import { Router, ActivatedRoute } from '@angular/router';
 import { GamesService } from './../../../../services/games.service';
@@ -12,6 +13,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class GamesListComponent implements OnInit {
 
   @Input() championship:Championship;
+  @Input() gameState:string;
+
   games:Game[];
   isLoading:boolean= true;
 
@@ -31,7 +34,7 @@ export class GamesListComponent implements OnInit {
    */
   loadData(){
     this.isLoading = true;
-    this.service.findAll(this.championship.oid).subscribe(data => {
+    this.service.findAllByState(this.championship.oid, GameState[this.gameState] ).subscribe(data => {
       this.games = data;
       console.log(this.games);
       this.isLoading = false;

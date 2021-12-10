@@ -1,3 +1,4 @@
+import { ChampionshipLastResultsComponent } from './components/championships/championship-last-results/championship-last-results.component';
 import { GameProfileStatsComponent } from './components/games/game-profile-stats/game-profile-stats.component';
 import { ChampionshipOverviewComponent } from './components/championships/championship-overview/championship-overview.component';
 import { ChampionshipGamesComponent } from './components/championships/championship-games/championship-games.component';
@@ -26,6 +27,7 @@ const routes: Routes = [
     {path: 'overview',component: ChampionshipOverviewComponent},
     {path: 'teams',component: ChampionshipTeamsComponent},
     {path: 'games',component: ChampionshipGamesComponent},
+    {path: 'last-results',component: ChampionshipLastResultsComponent},
   ]},
   {path: ':idChampionship/teams',component: TeamsPageComponent},
   {path: ':idChampionship/games',component: GamesPageComponent},
