@@ -44,6 +44,7 @@ import { GameLeadersComponent } from './components/games/aside/game-leaders/game
 import { GameMatchupComponent } from './components/games/aside/game-matchup/game-matchup.component';
 import { GameProfileStatsComponent } from './components/games/game-profile-stats/game-profile-stats.component';
 import { ChampionshipLastResultsComponent } from './components/championships/championship-last-results/championship-last-results.component';
+import { GamePlayByPlayComponent } from './components/games/content/game-play-by-play/game-play-by-play.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,8 @@ import { ChampionshipLastResultsComponent } from './components/championships/cha
     GameLeadersComponent,
     GameMatchupComponent,
     GameProfileStatsComponent,
-    ChampionshipLastResultsComponent
+    ChampionshipLastResultsComponent,
+    GamePlayByPlayComponent
   ],
   imports: [
     BrowserModule,

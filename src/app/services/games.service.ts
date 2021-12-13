@@ -1,3 +1,4 @@
+import { GameStatTeam } from './../models/game-stat-team';
 import { GameState } from './../models/game-state';
 import { ScoreboardItem } from './../models/scoreboard-item';
 import { GameStatPlayer } from './../models/game-stat-player';
@@ -14,7 +15,9 @@ import { Subject, BehaviorSubject, Observable } from 'rxjs';
 export class GamesService {
 
   actualGame:Game;
+  actualGameStats:GameStat[];
   eventsGame = new Subject<Game>();
+  eventsGameStats = new Subject<GameStat[]>();
 
   constructor( private http: HttpClient ) { }
 
@@ -71,6 +74,9 @@ export class GamesService {
     return this.http.get<ScoreboardItem[]>( environment.endpoint +"championships/" + oidChampionship + "/games/"  + oid + "/scoreboard" );
   }
 
+  findStatsTeam( oid:string, oidChampionship:string ){
+    return this.http.get<GameStatTeam[]>( environment.endpoint + "championships/" + oidChampionship + "/games/" + oid + "/stats-team" );
+  }
 
   eventGames():Observable<Game>{
     return this.eventsGame.asObservable();
@@ -80,4 +86,11 @@ export class GamesService {
     this.actualGame = data;
     this.eventsGame.next(data);
   }
+
+  pushGameStats(data:GameStat[]) {
+    this.actualGameStats = data;
+    this.eventsGameStats.next(data);
+  }
+
+  
 }

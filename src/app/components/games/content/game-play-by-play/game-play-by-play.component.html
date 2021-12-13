@@ -1,0 +1,65 @@
+<div class="alc-tabs card card--has-table">
+    <ul class="nav nav-tabs nav-justified alc-nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link" [class.active]="quarter==1" (click)="viewQuarter(1)" role="tab" data-toggle="tab">
+                <small class="d-none d-sm-block">Play-by-play</small>
+                <span class="d-block d-sm-none">1st Q</span>
+                <span class="d-none d-sm-block">1st Quarter</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" [class.active]="quarter==2" (click)="viewQuarter(2)" role="tab" data-toggle="tab">
+                <small class="d-none d-sm-block">Play-by-play</small>
+                <span class="d-block d-sm-none">2nd Q</span>
+                <span class="d-none d-sm-block">2nd Quarter</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" [class.active]="quarter==3" (click)="viewQuarter(3)" role="tab" data-toggle="tab">
+                <small class="d-none d-sm-block">Play-by-play</small>
+                <span class="d-block d-sm-none">3rd Q</span>
+                <span class="d-none d-sm-block">3rd Quarter</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" [class.active]="quarter==4" (click)="viewQuarter(4)" role="tab" data-toggle="tab">
+                <small class="d-none d-sm-block">Play-by-play</small>
+                <span class="d-block d-sm-none">4th Q</span>
+                <span class="d-none d-sm-block">4th Quarter</span>
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content card__content">
+        <div role="tabpanel" class="tab-pane fade show active">
+            <app-loading-nest *ngIf="isLoading"></app-loading-nest>
+            <div class="table-responsive" *ngIf="!isLoading">
+                <table class="table table-hover alc-table-stats alc-table-stats__play-by-play">
+                    <thead>
+                        <tr>
+                            <th class="alc-align-start">Time</th>
+                            <th class="alc-align-start">Description</th>
+                            <th class="alc-align-end">Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let stat of currentStats">
+                            <td class="alc-align-start alc-highlight-sm" [class.alc-highlight]="stat.typeTeam=='LOCAL'">{{stat.quarterTimeText}}</td>
+                            <td class="alc-align-start" [class.alc-highlight]="stat.typeTeam=='LOCAL'">
+                                <img src="assets/images/samples/logos/alchemists_b_shield.png" alt="" class="alc-team-img"> {{stat.type}} {{stat.value}}: {{stat.player?.name}} {{stat.player?.lastName}}
+                            </td>
+                            <td class="alc-align-end" [class.alc-highlight]="stat.typeTeam=='LOCAL'">{{stat.scoreText}}</td>
+                        </tr>
+                        <tr>
+                            <td class="alc-align-start alc-highlight-sm alc-highlight">0:00</td>
+                            <td class="alc-align-start alc-highlight">
+                                <span class="alc-team-img-spacer"></span>
+                                End of the First Quarter
+                            </td>
+                            <td class="alc-align-end alc-highlight">8 - 4</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

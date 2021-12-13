@@ -11,6 +11,8 @@ export class GameStat {
     typeTeam:TypeTeam;
     teamOid:string;
 
+    scoreText?:string;
+
     player?:Player;
     saved?:boolean;
 
